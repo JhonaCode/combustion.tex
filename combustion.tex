@@ -1,0 +1,1526 @@
+%% 
+% * <jhonatanjaam@gmail.com> 2018-01-29T11:12:59.680Z:
+%
+% ^.
+% * <jhonatanjaam@gmail.com> 2018-01-29T11:12:57.858Z:
+%
+% ^.
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt %% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for Elsevier's document class `elsarticle'
+%% with harvard style bibliographic references
+%% SP 2008/03/01
+
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+%\documentclass[final,5p,times,authoryear]{elsarticle}
+% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times,authoryear]{elsarticle}
+% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{subfigmat}
+\usepackage{multicol}
+\usepackage[table]{xcolor} 
+%\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage[utf8x]{inputenc}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amsmath,amssymb} 
+\usepackage{hyperref}
+\usepackage{setspace} 
+%to use mathlarger
+\usepackage{relsize}
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+\usepackage{upquote}
+\doublespacing
+\usepackage[vmargin=1in]{geometry}
+\usepackage{tgtermes}
+\usepackage{xfrac,fontspec,unicode-math}
+
+%%% FFF FFF FFF FFF FFF FFF FFF FFF FFF FFF
+\usepackage{soul}
+%%% FFF FFF FFF FFF FFF FFF FFF FFF FFF FFF
+
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+\journal{Computers $\&$ Fluids}
+
+\begin{document}
+
+%\setmathfont{Cambria_Math}
+%\setmathfont[version=termes]{TeX Gyre Termes Math}
+\setmathfont{TeX Gyre Termes Math}
+%\setmathfont{Cambria Math}
+%\setmathfont{Cambria Math}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+%Simulation of Hydrodynamic Instability in Compressible Flows \tnoteref{akno}}
+
+\title{Direct Numeric Simulation of Diffusion flame}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \address[label1]{}
+%% \address[label2]{}
+
+\author{Jhonatan Andres Aguirre Manco\corref{cor1}}
+%\ead{jhonatan@lcp.inpe.br}
+%\ead[url]{http://lattes.cnpq.br/6293462403216554}
+%\address{Laboratório  Associado de Combustão e propulsão, 
+%Instituto Nacional de Pesquisas Espaciais, 
+%Cachoeira Paulista, SP-Brasil, 12630-000}
+\cortext[cor1]{Principal corresponding author}
+
+\author{Mathues Castro\corref{cor1}}
+\author{Cesar Cristaldo\corref{cor1}}
+\author{Marcio Teixeira de Mendonca\corref{cor2}}
+\author{Fernando Fachini Filho\corref{cor1}}
+%\ead{jhonatan@lcp.inpe.br}%\ead[url]{http://lattes.cnpq.br/6293462403216554}%\address{Laboratório  Associado de Combustão e propulsão, %Instituto Nacional de Pesquisas Espaciais, %Cachoeira Paulista, SP-Brasil, 12630-000}
+%\cortext[cor1]{Principal corresponding author}
+
+%\ead{marciomtm@fab.mil.br}
+%\ead[url]{http://lattes.cnpq.br/9358950208993789}
+%\cortext[cor2]{Corresponding author}
+%\address{Instituto de Aeronáutica e Espaço, 
+%Departamento de Ciência e Tecnologia Aeroespacial, 
+%São José dos Campos, SP-Brasil,12228-904}
+
+%\author{Phillips John Morris\corref{cor2}}
+%\ead{pjm@psu.edu}
+%\ead[url]{http://www2.aero.psu.edu/morris.html}
+%\address{The Pennsylvania State University, 233C Hammond Building, University Park, PA 16802, USA}
+%
+\begin{abstract}
+\end{abstract}
+
+\begin{keyword}
+%% keywords here, in the form: keyword \sep keyword
+%% PACS codes here, in the form: \PACS code \sep code
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+Mixing Layer  
+\sep Combustion 
+\sep Diffusion Flame 
+\sep Hydrodynamic stability
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+%% main text
+% \section{}
+% \label{}
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+%% \section{}
+%% \label{}
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+%% \bibliographystyle{elsarticle-harv} 
+%% \bibliography{<your bibdatabase>}
+
+\section{Introduction}
+%\input{introduction}
+\
+\begin{equation}
+ \frac{D \tilde{\rho}}{D \tilde{t}}
++\tilde{\rho} \tilde{\nabla}\cdot\tilde{\mathbf{u}}
+ =0,
+\label{eq:mass}  
+\end{equation}
+
+\begin{equation}
+	\tilde{\rho} \frac{D  \tilde{Y_i}}{D \tilde{t}}
+= 
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_i\tilde{\nabla} \tilde{Y_i})
+	+
+    \mathcal{s}_i {\color{red} \omega},
+\label{eq:specie}  
+\end{equation}
+
+\begin{equation}
+    \tilde{\rho}\frac{D  \tilde{\mathbf{u}}}{D \tilde{t}}
+= - \tilde{\nabla} \tilde{p} 
+  + \tilde{\nabla} \cdot \tilde{\pmb{\tau}} 
+  ,
+\label{eq:momentum}  
+\end{equation}
+
+{\color{red} The term $\omega$ is the reaction rate and 
+$\omega_i = \mathcal{s}_i \omega$ stands for the generation or consumption rate of species $i$.
+}
+
+
+and
+
+\begin{equation}
+        \tilde{\rho}\frac{D \tilde{E} }{D \tilde{t}}
+=       - 
+        \tilde{\nabla} \cdot (\tilde{p} \tilde{\mathbf{u}})
+        + 
+        \tilde{\nabla} \cdot (\pmb{\tilde{\tau}}\cdot\tilde{\mathbf{u}}) 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T}) 
+        + 
+        \sum\limits_i \tilde{\rho}_i\tilde{U}_i\tilde{h}_i
+  ,
+\label{eq:E}  
+\end{equation}
+
+\begin{equation}
+        \sum\limits_i \tilde{\rho}_i\tilde{U}_i\tilde{h}_i
+\end{equation}
+
+Energy flux due to the diffusion of the specie i, went 
+the specie i diffusing from one position to other 
+carried its enthalpy, that is a form of energy. 
+The chemical reaction can be occurs in the flow 
+and exchange energy  due diffusion. 
+
+
+
+\subsubsection{Especial form of the Energy Equation}
+%
+If the gas mixture is considered as thermally perfect, 
+$dh=c_{p}dT$, and assuming a mixture of perfect gases then 
+%%%
+%%%
+\begin{equation}
+\begin{split}
+        \frac{d}{dt}\tilde{h}=\tilde{c}_p\frac{d}{dt}\tilde{T}
+\end{split}
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+        \frac{d}{dt}\tilde{h}
+        =
+        \left(
+                \frac{d}{dt}
+		\sum\limits_i\tilde{Y}_i\tilde{h}_i
+        \right)
+\\
+        =
+        \left(
+                \frac{d}{dt}
+		\sum\limits_i\tilde{Y}_i
+		\tilde{h}_i
+        \right)
+\\
+        =
+        \sum\limits_i
+        \left(
+                \tilde{h}_i
+                \frac{d}{dt}
+		\tilde{Y}_i
+                +
+                \tilde{Y}_i
+                \frac{d}{dt}
+		\tilde{h}_i
+        \right)
+\\
+        =
+        \sum\limits_i
+        \left(
+                \tilde{h}_i
+                \frac{d}{dt}
+		\tilde{Y}_i
+                +
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{d}{dt}
+		\tilde{T}
+        \right)
+\\
+        =
+        \sum\limits_i
+        \left(
+                \tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+                +
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{D}{Dt}
+		\tilde{T}
+        \right)
+\\
+\text{Using the species conservation equation}
+\\
+        \frac{D}{Dt}
+	\tilde{h}
+        =
+        \sum\limits_i
+        \left[
+                \frac{\tilde{h}_i}{\tilde{\rho}}
+                \tilde{\nabla}\cdot
+                (
+		\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
+		+
+        	\mathcal{s}_i \omega
+		)
+                +
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+        	\frac{D}{Dt}
+		\tilde{T}
+        \right]
+\\
+        \tilde{\rho}
+        \frac{D}{Dt}
+	\tilde{h}
+        =
+        \sum\limits_i
+        \left\{
+                \tilde{h}_i
+                [
+                	\tilde{\nabla}\cdot
+			   (
+			\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
+			)
+			+
+        		\mathcal{s}_i \omega
+		    ]
+                +
+                \tilde{\rho}
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+        	\frac{D}{Dt}T
+        \right\}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+        \tilde{\rho}
+        \frac{\tilde{D}}{\tilde{D} t}\tilde{h}
+        =
+        \sum\limits_i
+        \left\{
+                \tilde{h}_i
+                [
+                	\tilde{\nabla}\cdot
+		     	(
+			\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
+			)
+			+
+        		\mathcal{s}_i \omega
+	        	]
+                +
+                \tilde{\rho}
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{\tilde{D}}{\tilde{D} t}
+                \tilde{T}
+        \right\}
+\end{split}
+\end{equation}
+
+Remember, the energy equation for enthalpy {\color{red} (thermal part, $\int c_pdT$) } can be written  as:
+
+\begin{equation}
+\begin{split}
+        \tilde{\rho}\frac{D  \tilde{h}}{D\tilde{t}}
+=
+        \frac{D \tilde{p}}{D\tilde{t}}
++       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
++ 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
++
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        {\color{red}
+        -
+        \sum_i h_i^0 s_i \omega,
+        }
+\end{split}
+\end{equation}
+
+{\color{red}
+\[
+       \tilde{\rho}\frac{D  \tilde{h}}{D\tilde{t}}
+=
+        \frac{D \tilde{p}}{D\tilde{t}}
++       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
++ 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
++
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        +
+        Q\omega,
+\]
+with
+\[
+   Q \equiv -\sum_i h_i^0 s_i 
+\]
+$h_i^0$ is the formation enthalpy of species $i$.
+}
+
+
+
+
+
+using the above equation, 
+
+\begin{equation}
+\begin{split}
+        \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+        +       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        +
+        {\color{red} Q\omega}
+        =
+	\\
+        \sum\limits_i
+                \tilde{h}_i
+                [
+                	\tilde{\nabla}\cdot
+			(
+			\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
+			)
+			+
+        	\mathcal{s}_i \omega
+		]
+        +
+        \sum\limits_i
+        \left(
+                \tilde{\rho}
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{\tilde{D}}{\tilde{D} t}
+                \tilde{T}
+        \right)
+\end{split}
+\end{equation}
+
+now, applying distributive propertie of the gradient to the third term  of the left hand side of the equation, 
+
+\begin{equation}
+\begin{split}
+        \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+        +       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i
+        \tilde{h}_i
+        \tilde{\nabla}\cdot
+	(
+	\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
+	)
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \tilde{\nabla} 
+        \tilde{h}_i
+        +
+        {\color{red} Q\omega}
+        =
+\\
+        \sum\limits_i
+        \tilde{h}_i
+        [
+        	\tilde{\nabla}\cdot
+		(
+		\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
+		)
+		+
+        	\mathcal{s}_i \omega
+	    ]
+        +
+        \sum\limits_i
+        \left(
+                \tilde{\rho}
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{\tilde{D}}{\tilde{D} t}
+                \tilde{T}
+        \right)
+\end{split}
+\end{equation}
+
+eliminating the equal terms, its getting  
+
+\begin{equation}
+\begin{split}
+\\
+        \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+        +       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \tilde{\nabla} 
+        \tilde{h}_i
+        =
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i  \omega
+	+
+        \sum\limits_i
+        \left(
+                \tilde{\rho}
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{\tilde{D}}{\tilde{D} t}
+                \tilde{T}
+        \right)
+\\
+\text{rearranging}
+\\
+        \sum\limits_i
+        \left(
+                \tilde{\rho}
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{\tilde{D}}{\tilde{D} t}
+                \tilde{T}
+        \right)
+        -
+        \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \tilde{\nabla} 
+        \tilde{h}_i
+	-
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i \omega
+\\
+        \tilde{\rho}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \tilde{T}
+        \sum\limits_i
+        \left(
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+        \right)
+        -
+        \frac{D \tilde{p}}{D\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \tilde{\nabla} 
+        \tilde{h}_i
+	-
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i \omega	
+\end{split}
+\end{equation}
+
+defining 
+$
+{c}_{pf}
+=
+\sum\limits_i
+\left(
+        \tilde{Y}_i
+        \tilde{c}_{pi}
+\right)
+$
+
+\begin{equation}
+\begin{split}
+        \tilde{\rho}
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \tilde{T}
+        -
+        \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \tilde{\nabla} 
+        \tilde{h}_i
+	-
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+        \omega
+\end{split}
+\end{equation}
+
+Using the chain rule, because the entalphy is function only of the temperature, then 
+
+\begin{equation}
+\begin{split}
+        \tilde{\rho}
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \tilde{T}
+        -
+        \frac{D \tilde{p}}{D\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+        \frac{d \tilde{h}_i}{ d T}
+        \tilde{\nabla}T 
+        \right)
+\\
+        \tilde{\rho}
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \tilde{T}
+        -
+        \frac{D \tilde{p}}{D\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+        c_{pi}
+        \tilde{\nabla}T 
+        \right)
+	-
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+         \omega
+\end{split}
+\end{equation}
+
+Enthalpy of a chemically reacting mixture  
+is define as $h=\sum_iY_ih_i$, and 
+the specific heat  at constant pressure is 
+$C_p=\left(\partial{h}/\partial{T}\right)_p$,
+then:
+
+\begin{equation}
+\begin{split}
+C_p
+=
+\left(\frac{\partial{h}}{\partial{T}}\right)_p
+=
+\left(\frac{\partial}{\partial{T}}\sum_i Y_ih_i\right)_p
+=
+\left(\sum_i Y_i\frac{\partial{h_i}}{\partial{T}}\right)_p
++
+\left(\sum_i h_i\frac{\partial{Y_i}}{\partial{T}}\right)_p
+\end{split}
+\end{equation}
+
+Defining: 
+
+\begin{equation}
+C_{pi}=\frac{\partial{h_i}}{\partial{T}}
+\end{equation}
+
+as the specific heat of the specie $i$.
+
+\begin{equation}
+\begin{split}
+C_p
+=
+\left(\sum_i Y_iC_{pi}\right)_p
++
+\left(\sum_i h_i\frac{\partial{Y_i}}{\partial{T}}\right)_p
+\end{split}
+\end{equation}
+
+\begin{equation}
+C_{pf}=\sum_iY_iC_{pi}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+C_p
+=
+\underbrace{
+C_{pf}
+	    }_{\text{frozem}C_p}
++
+\underbrace{
+		\left(\sum_i h_i\frac{\partial{Y_i}}{\partial{T}}\right)_p
+}_{\text{chemical reacting} C_p}
+\end{split}
+\end{equation}
+
+
+Enthalpy of specie $i$ is defined as:
+
+\begin{equation}
+	h_i=\int_0^TC_{pi}dT+\Delta(h_f)_i^o
+\end{equation}
+
+\section{Pressure equation}
+
+
+Using the ideal gas equation:
+
+\begin{equation}
+                \frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+\end{equation}
+
+and the definition of $R$ for a chemical reacting flow 
+
+\begin{equation}
+	\tilde{R}=\sum_iY_i\tilde{R}_i
+\end{equation}
+
+\begin{equation}
+\begin{split}
+        \tilde{\rho}
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \left(
+                \frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+        \right)
+        -
+        \frac{D \tilde{p}}{D\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+        	\right)
+        \right)
+	-
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+        \tilde{\rho}
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \left(
+                \frac{1}{\tilde{\rho}\tilde{R}}
+        \right)
+	+
+        \frac{1}{\tilde{R}}
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \left(
+                \tilde{p}
+        \right)
+        -
+        \frac{D \tilde{p}}{D\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\\
+        \tilde{\rho}
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \left(
+                \frac{1}{\tilde{\rho}\tilde{R}}
+        \right)
+	+
+        \left(
+        	\frac{\tilde{c}_{pf}}{\tilde{R}}
+		-1
+        \right)
+        \frac{D \tilde{p}}{D\tilde{t}}
+        =
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+	\frac{\tilde{c}_{pf}}{\tilde{R}}=\frac{\tilde{\gamma}}{\tilde{\gamma-1}}
+	\\
+        \left(
+        	\frac{\tilde{c}_{pf}}{\tilde{R}}
+		-1
+        \right)
+	=
+	%R=cp-cv
+	%R/cp=1-1/gamma
+	%R/cp=1-1/gamma
+	%R/cp=(gamma-1)/gamma
+	%Cp/R=gamma/(gamma-1)-1
+	%Cp/R=(gamma-(gamma-1))/(gamma-1)
+	%Cp/R=(1)/(gamma-1)
+        \left(
+		\frac{1}{\tilde{\gamma}-1}
+        \right)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+        \frac{D \tilde{p}}{D\tilde{t}}
+	+
+        \tilde{\rho}
+	(\tilde{\gamma}-1)
+        \tilde{c}_{pf}
+        \frac{\tilde{D}}{\tilde{D} t}
+        \left(
+                \frac{1}{\tilde{\rho}\tilde{R}}
+        \right)
+        =
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+	+
+	(\tilde{\gamma}-1)
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+	(\tilde{\gamma}-1)
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+        \frac{D \tilde{p}}{D\tilde{t}}
+        %\tilde{\rho}
+	%(\tilde{\gamma}-1)
+        %\tilde{c}_{pf}
+        %\frac{\tilde{D}}{\tilde{D} t}
+	%(\tilde{\rho}\tilde{R})^{-1}
+	-
+	(\tilde{\gamma}-1)
+        \tilde{c}_{pf}
+	\frac{1}{\tilde{\rho}\tilde{R}^2}
+        \frac{\tilde{D}}{\tilde{D} t}
+	(
+	\tilde{\rho}\tilde{R}
+	)
+        =
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+	(\tilde{\gamma}-1)
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+        \frac{D \tilde{p}}{D\tilde{t}}
+	-
+	(\tilde{\gamma}-1)
+        \tilde{c}_{pf}
+	\frac{1}{\tilde{\rho}\tilde{R}}
+        \frac{\tilde{D}}{\tilde{D} t}
+	(
+	\tilde{\rho}
+	)
+	-
+	(\tilde{\gamma}-1)
+        \tilde{c}_{pf}
+	\frac{1}{\tilde{R}^2}
+        \frac{\tilde{D}}{\tilde{D} t}
+	\tilde{R}
+        =
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+	(\tilde{\gamma}-1)
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+
+Considering that $\tilde{R}$ is constant to simpliefied the problem,
+
+\begin{equation}
+\begin{split}
+        \frac{D \tilde{p}}{D\tilde{t}}
+	-
+	(\tilde{\gamma}-1)
+	\frac{\tilde{c}_{pf}}{\tilde{\rho}\tilde{R}}
+        \frac{\tilde{D}}{\tilde{D} t}
+	(
+	\tilde{\rho}
+	)
+        =
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+	(\tilde{\gamma}-1)
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+Using the conservation mass equation 
+to eliminate $\dfrac{\tilde{D}\tilde{\rho}}{\tilde{D}t}$
+
+\begin{equation}
+\begin{split}
+        \frac{D \tilde{p}}{D\tilde{t}}
+	-
+	(\tilde{\gamma}-1)
+	\frac{\tilde{c}_{pf}}{\tilde{R}}
+	\tilde{\nabla}\cdot{\mathbf{u}}
+        =
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+	(\tilde{\gamma}-1)
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+        \frac{D \tilde{p}}{D\tilde{t}}
+	-
+	\tilde{\gamma}
+	\tilde{\nabla}\cdot{\mathbf{u}}
+        =
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}_{im}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	-
+	(\tilde{\gamma}-1)
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+
+Zeldowich formulation difussion flame, $Da\to \infty$
+
+\begin{equation}
+	\tilde{\rho} \frac{D  \tilde{Y_o}}{D \tilde{t}}
+= 
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_o\tilde{\nabla} \tilde{Y_o})
+	+
+        \tilde{\rho}\mathcal{s}_ow	
+ ,
+\end{equation}
+
+\begin{equation}
+	\tilde{\rho} \frac{D  \tilde{Y_f}}{D \tilde{t}}
+= 
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_f\tilde{\nabla} \tilde{Y_f})
+	+
+        \tilde{\rho}\mathcal{s}_fw	
+ ,
+\end{equation}
+
+Adding the above equation
+
+\begin{equation}
+	\tilde{\rho} \frac{D  (\tilde{Y_o}+\tilde{Y_f})}{D \tilde{t}}
+= 
+	\tilde{\nabla}
+	\cdot
+	\left( 
+		\tilde{\rho} 
+		\left( 
+			\mathcal{D}_o\tilde{\nabla} \tilde{Y_o}
+			+
+			\mathcal{D}_f\tilde{\nabla} \tilde{Y_f})
+		\right) 
+	\right) 
+	+
+	\tilde{\rho}(\mathcal{s}_o+{s}_f)w	
+ ,
+\end{equation}
+
+Assuming that $\mathcal{D}_f=\mathcal{D}_f=\mathcal{D}$
+
+\begin{equation}
+	\tilde{\rho} \frac{D  (\tilde{Y_o}+\tilde{Y_f})}{D \tilde{t}}
+= 
+	\tilde{\nabla}
+	\cdot
+	\left( 
+		\tilde{\rho} 
+		\left( 
+			\mathcal{D}\tilde{\nabla} (\tilde{Y_o}+\tilde{Y_f})
+		\right) 
+	\right) 
+	+
+	\tilde{\rho}(\mathcal{s}_o+{s}_f)w	
+ ,
+\end{equation}
+
+
+\begin{equation}
+\begin{split}
+        \frac{D \tilde{p}}{D\tilde{t}}
+	-
+	\tilde{\gamma}
+	\tilde{\nabla}\cdot{\mathbf{u}}
+        =
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	- 
+	(\tilde{\gamma}-1)
+        \sum\limits_i
+        \tilde{h}_i
+        \mathcal{s}_i	
+\end{split}
+\end{equation}
+
+Defining:
+
+\begin{equation}
+\tilde{\rho}\tilde{Q}w
+\equiv
+(\tilde{\gamma}-1)
+\sum\limits_i
+\tilde{h}_i
+\mathcal{s}_i	
+\end{equation}
+
+And mutliplied this equation by  $(s_o+s_f)/Q$
+
+\begin{equation}
+\begin{split}
+	\frac{D }{D\tilde{t}}
+	\left(
+		\frac{\tilde{p}(s_o+s_f)}{Q}
+	\right)
+	+
+	\tilde{\gamma}
+	\frac{(s_o+s_f)}{Q}
+	\tilde{\nabla}\cdot{\mathbf{u}}
+        =
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	- 
+	(s_o+s_f)
+	\tilde{\rho}w
+\end{split}
+\end{equation}
+
+Adding it to the modified species equation, its getting:
+
+\begin{equation}
+\begin{split}
+	\frac{D }{D\tilde{t}}
+	\left(
+		\frac{\tilde{p}(s_o+s_f)}{Q}
+	\right)
+	+
+	\tilde{\rho} \frac{D  (\tilde{Y_o}+\tilde{Y_f})}{D \tilde{t}}
+	+
+	\tilde{\gamma}
+	\frac{(s_o+s_f)}{Q}
+	\tilde{\nabla}\cdot{\mathbf{u}}
+        =
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	+
+	\tilde{\nabla}
+	\cdot
+	\left( 
+		\tilde{\rho} 
+		\left( 
+			\mathcal{D}\tilde{\nabla} (\tilde{Y_o}+\tilde{Y_f})
+		\right) 
+	\right) 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+	\frac{D }{D\tilde{t}}
+	\left(
+		\frac{\tilde{p}(s_o+s_f)}{Q}
+	\right)
+	+
+	\tilde{\rho} \frac{\partial (\tilde{Y_o}+\tilde{Y_f})}{\partial \tilde{t}}
+	+
+	\tilde{\rho} {\mathbf{u}}\cdot\nabla( (\tilde{Y_o}+\tilde{Y_f})
+	+
+	\tilde{\gamma}
+	\frac{(s_o+s_f)}{Q}
+	\tilde{\nabla}\cdot{\mathbf{u}}
+        =
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	+
+	\tilde{\nabla}
+	\cdot
+	\left( 
+		\tilde{\rho} 
+		\left( 
+			\mathcal{D}\tilde{\nabla} (\tilde{Y_o}+\tilde{Y_f})
+		\right) 
+	\right) 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+	\frac{D }{D\tilde{t}}
+	\left(
+		\frac{\tilde{p}(s_o+s_f)}{Q}
+	\right)
+	+
+	\tilde{\rho} \frac{\partial (\tilde{Y_o}+\tilde{Y_f})}{\partial \tilde{t}}
+	+
+ 	(\tilde{Y_o}+\tilde{Y_f})
+	\left(
+		\frac{\partial \tilde{\rho}}{\partial t}
+		+
+		\tilde{\nabla}\cdot(\rho\mathbf{u})
+	\right)
+	+
+	\tilde{\rho} {\mathbf{u}}\cdot\nabla( (\tilde{Y_o}+\tilde{Y_f})
+	+
+	\tilde{\gamma}
+	\frac{(s_o+s_f)}{Q}
+	\tilde{\nabla}\cdot{\mathbf{u}}
+        =
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	\frac{(s_o+s_f)}{Q}
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+	\\
+	(\tilde{\gamma}-1)
+	\frac{(s_o+s_f)}{Q}
+        \sum\limits_i 
+        \tilde{\rho}
+        \mathcal{D}
+        \tilde{\nabla}
+        \tilde{Y}_i     
+        \cdot
+        \left(
+                c_{pi}
+                \tilde{\nabla}
+                \left(
+                	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+                \right)
+        \right)
+	+
+	\tilde{\nabla}
+	\cdot
+	\left( 
+		\tilde{\rho} 
+		\left( 
+			\mathcal{D}\tilde{\nabla} (\tilde{Y_o}+\tilde{Y_f})
+		\right) 
+	\right) 
+\end{split}
+\end{equation}
+
+
+
+\end{document}
