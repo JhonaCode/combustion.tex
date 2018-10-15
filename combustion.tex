@@ -284,11 +284,45 @@ The absolute enthalpy is defined as:
 \end{equation}
 
 Comparing this equation with the total enthapy equation and 
-using the equation for the conservation of the species:
+using the equation for the conservation of the species is 
+getting:
+
+\begin{equation}
+	\frac{\tilde{D} \tilde{h}}{\tilde{D} t}
+	=
+	\frac{\tilde{D}\tilde{h}_{sens}}{\tilde{D}t}
+	+
+	\frac{1}{\tilde{\rho}}
+	\sum_i\Delta(\tilde{h}_f)_i^o
+	\left(
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_i\tilde{\nabla} \tilde{Y_i})
+	\right)
+	+
+	\frac{1}{\tilde{\rho}}
+	\sum_i\Delta(\tilde{h}_f)_i^o
+	s_i \omega.
+\end{equation}
+
+\begin{equation}
+	\tilde{\rho}
+	\frac{\tilde{D} \tilde{h}}{\tilde{D} t}
+	=
+	\tilde{\rho}
+	\frac{\tilde{D}\tilde{h}_{sens}}{\tilde{D}t}
+	+
+	\sum_i\Delta(\tilde{h}_f)_i^o
+	\left(
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_i\tilde{\nabla} \tilde{Y_i})
+	\right)
+	+
+	\sum_i\Delta(\tilde{h}_f)_i^o
+	s_i \omega.
+\end{equation}
 
 \begin{equation}
 \begin{split}
-	    \frac{\tilde{D}\tilde{h}_{sens}}{\tilde{D}t}
+	\tilde{\rho}
+	\frac{\tilde{D}\tilde{h}_{sens}}{\tilde{D}t}
 =
         \frac{D \tilde{p}}{D\tilde{t}}
 +       
@@ -300,12 +334,23 @@ using the equation for the conservation of the species:
         \sum\limits_i 
         \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
         \tilde{h}_i.
+	\\
 -
     	\sum_i\Delta(\tilde{h}_f)_i^o
         \frac{\tilde{D}\tilde{Y}_i}{\tilde{D}t}
+-
+	\tilde{\rho}
+	\frac{\tilde{D}\tilde{h}_{sens}}{\tilde{D}t}
+-
+	\sum_i\Delta(\tilde{h}_f)_i^o
+	\left(
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_i\tilde{\nabla} \tilde{Y_i})
+	\right)
+-
+	\sum_i\Delta(\tilde{h}_f)_i^o
+	s_i \omega.
 \end{split}
 \end{equation}
-
 
 
 \begin{equation}
