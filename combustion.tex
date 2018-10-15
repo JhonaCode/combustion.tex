@@ -67,7 +67,7 @@
 \doublespacing
 \usepackage[vmargin=1in]{geometry}
 \usepackage{tgtermes}
-\usepackage{xfrac,fontspec,unicode-math}
+%\usepackage{xfrac,fontspec,unicode-math}
 
 %%% FFF FFF FFF FFF FFF FFF FFF FFF FFF FFF
 \usepackage{soul}
@@ -87,7 +87,7 @@
 
 %\setmathfont{Cambria_Math}
 %\setmathfont[version=termes]{TeX Gyre Termes Math}
-\setmathfont{TeX Gyre Termes Math}
+%\setmathfont{TeX Gyre Termes Math}
 %\setmathfont{Cambria Math}
 %\setmathfont{Cambria Math}
 
@@ -196,9 +196,14 @@ Mixing Layer
 = 
 	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_i\tilde{\nabla} \tilde{Y_i})
 	+
-    \mathcal{s}_i {\color{red} \omega},
+    s_i \omega.
 \label{eq:specie}  
 \end{equation}
+
+%{\color{red}
+The term $\omega$ is the reaction rate and 
+$\omega_i = s_i \omega$ stands for the generation or consumption rate of species $i$.
+%}
 
 \begin{equation}
     \tilde{\rho}\frac{D  \tilde{\mathbf{u}}}{D \tilde{t}}
@@ -208,12 +213,7 @@ Mixing Layer
 \label{eq:momentum}  
 \end{equation}
 
-{\color{red} The term $\omega$ is the reaction rate and 
-$\omega_i = \mathcal{s}_i \omega$ stands for the generation or consumption rate of species $i$.
-}
-
-
-and
+Finally the energy equation is:
 
 \begin{equation}
         \tilde{\rho}\frac{D \tilde{E} }{D \tilde{t}}
@@ -229,19 +229,93 @@ and
 \label{eq:E}  
 \end{equation}
 
+where 
+
 \begin{equation}
         \sum\limits_i \tilde{\rho}_i\tilde{U}_i\tilde{h}_i
+        =
+        \tilde{\nabla} \cdot
+        \tilde{\rho}
+        \sum\limits_i 
+        \mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
 \end{equation}
 
-Energy flux due to the diffusion of the specie i, went 
+is the energy flux due to the diffusion of the specie i, went 
 the specie i diffusing from one position to other 
 carried its enthalpy, that is a form of energy. 
 The chemical reaction can be occurs in the flow 
 and exchange energy  due diffusion. 
 
+A special form of energy equation can be founded if the definition of
+enthalpy and the perfect gas equation are used. 
 
 
-\subsubsection{Especial form of the Energy Equation}
+\begin{equation}
+\begin{split}
+        \tilde{\rho}\frac{D  \tilde{h}}{D\tilde{t}}
+=
+        \frac{D \tilde{p}}{D\tilde{t}}
++       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
++ 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
++
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i.
+\end{split}
+\end{equation}
+
+The absolute enthalpy is defined as:
+
+\begin{equation}
+	h=\sum_iY_ih_{i,sens}+\sum_iY_i\Delta(h_f)_i^o
+\end{equation}
+
+\begin{equation}
+	\frac{\tilde{D} \tilde{h}}{\tilde{D} t}
+	=
+	\frac{\tilde{D}\tilde{h}_{sens}}{\tilde{D}t}
+	+
+	\sum_i\Delta(\tilde{h}_f)_i^o
+	\frac{\tilde{D}\tilde{Y}_i}{\tilde{D}t}
+\end{equation}
+
+Comparing this equation with the total enthapy equation and 
+using the equation for the conservation of the species:
+
+\begin{equation}
+\begin{split}
+	    \frac{\tilde{D}\tilde{h}_{sens}}{\tilde{D}t}
+=
+        \frac{D \tilde{p}}{D\tilde{t}}
++       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
++ 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
++
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i.
+-
+    	\sum_i\Delta(\tilde{h}_f)_i^o
+        \frac{\tilde{D}\tilde{Y}_i}{\tilde{D}t}
+\end{split}
+\end{equation}
+
+
+
+\begin{equation}
+	h_i=\int_0^TC_{pi}dT+\Delta(h_f)_i^o
+\end{equation}
+
+
+
+\subsection{Pressure form  of the Energy Equation}
+
 %
 If the gas mixture is considered as thermally perfect, 
 $dh=c_{p}dT$, and assuming a mixture of perfect gases then 
@@ -320,7 +394,7 @@ $dh=c_{p}dT$, and assuming a mixture of perfect gases then
                 (
 		\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
 		+
-        	\mathcal{s}_i \omega
+        	s_i \omega
 		)
                 +
                 \tilde{Y}_i
@@ -342,7 +416,7 @@ $dh=c_{p}dT$, and assuming a mixture of perfect gases then
 			\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
 			)
 			+
-        		\mathcal{s}_i \omega
+        		s_i \omega
 		    ]
                 +
                 \tilde{\rho}
@@ -367,7 +441,7 @@ $dh=c_{p}dT$, and assuming a mixture of perfect gases then
 			\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
 			)
 			+
-        		\mathcal{s}_i \omega
+        		s_i \omega
 	        	]
                 +
                 \tilde{\rho}
@@ -456,7 +530,7 @@ using the above equation,
 			\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
 			)
 			+
-        	\mathcal{s}_i \omega
+        	s_i \omega
 		]
         +
         \sum\limits_i
@@ -470,7 +544,63 @@ using the above equation,
 \end{split}
 \end{equation}
 
-now, applying distributive propertie of the gradient to the third term  of the left hand side of the equation, 
+{\color{red}
+\[
+        \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+        +       
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        + 
+        \tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        +
+        {\color{red} Q\omega}
+        =
+\]
+\[
+         \tilde{\rho}
+        \sum\limits_i
+        \left(
+                \tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+                +
+        \tilde{\rho}
+        \sum\limits_i
+        \left(
+                \tilde{Y}_i
+                \tilde{c}_{pi}
+                \frac{D}{Dt}
+		\tilde{T}
+        \right)
+        =
+\]
+\[
+         \tilde{\rho}
+         \sum\limits_i
+        \left(
+                \tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+                +
+                 \tilde{\rho} \tilde{c}_{p}
+                \frac{D}{Dt}
+		\tilde{T}
+\]
+with
+\[
+     \tilde{c}_p \equiv \sum\limits_i \tilde{Y}_i \tilde{c}_{pi}
+\]
+
+JHONATAN, VAMOS DEIXAR A DERIVADA TOTAL DE $Y_i$. NO FINAL TRATAMOS.
+}
+
+Now, applying distributive propertie of the gradient to the third term  of the left hand side of the equation, 
 
 \begin{equation}
 \begin{split}
@@ -507,7 +637,7 @@ now, applying distributive propertie of the gradient to the third term  of the l
 		\tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i
 		)
 		+
-        	\mathcal{s}_i \omega
+        	s_i \omega
 	    ]
         +
         \sum\limits_i
@@ -525,7 +655,6 @@ eliminating the equal terms, its getting
 
 \begin{equation}
 \begin{split}
-\\
         \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
         +       
         \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
@@ -541,11 +670,12 @@ eliminating the equal terms, its getting
         \tilde{\nabla} 
         \tilde{h}_i
         -
-        {\color{red} \sum_i h_i^0s_i\omega}
+        {\color{red} \sum_i h_i^0 s_i\omega}
         =
+        \\
         \sum\limits_i
         \tilde{h}_i
-        \mathcal{s}_i  \omega
+        s_i  \omega
 	+
         \sum\limits_i
         \left(
@@ -555,9 +685,12 @@ eliminating the equal terms, its getting
                 \frac{\tilde{D}}{\tilde{D} t}
                 \tilde{T}
         \right)
-\\
-\text{rearranging}
-\\
+\end{split}
+\end{equation}
+
+rearranging
+\begin{equation}
+\begin{split}
         \sum\limits_i
         \left(
                 \tilde{\rho}
@@ -582,9 +715,10 @@ eliminating the equal terms, its getting
         \tilde{\nabla} 
         \tilde{h}_i
 	-
+\\
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i \omega
+        ({\color{red} h_i^0} +\tilde{h}_i)
+        s_i \omega
 \\
         \tilde{\rho}
         \frac{\tilde{D}}{\tilde{D} t}
@@ -610,9 +744,10 @@ eliminating the equal terms, its getting
         \tilde{\nabla} 
         \tilde{h}_i
 	-
+\\	
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i \omega	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i \omega	
 \end{split}
 \end{equation}
 
@@ -649,9 +784,10 @@ $
         \tilde{\nabla} 
         \tilde{h}_i
 	-
+\\
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
         \omega
 \end{split}
 \end{equation}
@@ -681,6 +817,12 @@ Using the chain rule, because the entalphy is function only of the temperature, 
         \frac{d \tilde{h}_i}{ d T}
         \tilde{\nabla}T 
         \right)
+        	-
+\\
+        \sum\limits_i
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \\
         \tilde{\rho}
         \tilde{c}_{pf}
@@ -704,12 +846,388 @@ Using the chain rule, because the entalphy is function only of the temperature, 
         \tilde{\nabla}T 
         \right)
 	-
+\\	
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
-         \omega
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
+%      
+%	- \sum\limits_i  \tilde{h}_i  s_i	  \omega
 \end{split}
 \end{equation}
+
+{\color{red}
+\[
+         \tilde{\rho} \tilde{c}_{p}
+        \frac{D}{Dt}
+		\tilde{T}
+		-
+		 \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+		=
+		\tilde{\nabla} \cdot (\tilde{k}\tilde{\nabla} \tilde{T})
+                +
+        {\color{red} Q\omega}
+        +
+\]
+\[
+        \left[
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+         \tilde{\rho}
+        \sum\limits_i
+        \left(
+                \tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+
+\[
+         \tilde{\rho} \tilde{c}_{p}
+         \frac{\tilde{D} } {\tilde{D}\tilde{t}}
+		(\frac{ \tilde{p} }{ \tilde{R} \tilde{\rho} } )
+		-
+		 \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+		=
+		\tilde{\nabla} \cdot 
+		\left[\tilde{k}\tilde{\nabla} (\frac{ \tilde{p} }{ \tilde{R} \tilde{\rho} } )\right]
+                +
+        {\color{red} Q\omega}
+        +
+\]
+\[
+         \tilde{\rho} \frac{ \tilde{c}_{p} }{ \tilde{R} }
+         \left(
+         \frac{ 1 }{  \tilde{\rho} }
+         \frac{\tilde{D}  \tilde{p}} {\tilde{D}\tilde{t}}
+		-
+		(\frac{ \tilde{p} }{  \tilde{\rho}^2 } )
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+		\right)
+		-
+		 \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+		=
+		\tilde{\nabla} \cdot
+		\left[ \tilde{\rho} 
+		       \frac{\tilde{k}}{\tilde{\rho} \tilde{c}_{p} }
+		       \frac{\tilde{c}_{p}}{\tilde{R}}
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        {\color{red} Q\omega}
+        +
+\]
+\[
+          \frac{ \tilde{c}_{p} }{ \tilde{R} }
+         \left(
+         \frac{\tilde{D}  \tilde{p}} {\tilde{D}\tilde{t}}
+		-
+		(\frac{ \tilde{p} }{  \tilde{\rho} } )
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+		\right)
+		-
+		 \frac{\tilde{D} \tilde{p}}{\tilde{D}\tilde{t}}
+		=
+		\frac{\tilde{c}_{p}}{\tilde{R}}
+		\tilde{\nabla} \cdot 
+			\left[ \tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        {\color{red} Q\omega}
+        +
+\]
+\[
+        \left[
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+
+\[
+          \left(
+          \frac{ \tilde{c}_{p} }{ \tilde{R} }
+          -
+          1
+          \right)
+         \frac{\tilde{D}  \tilde{p}} {\tilde{D}\tilde{t} }
+		=
+		\frac{\tilde{c}_{p}}{\tilde{R}}
+		\tilde{\nabla} \cdot 
+			\left[ \tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        {\color{red} Q\omega}
+        +
+\]
+\[
+        \left[
+        \frac{ \tilde{c}_{p} }{ \tilde{R} }
+        (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+		 +
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+
+
+\[
+          \left(
+          \frac{ \tilde{c}_{p} }{ \tilde{R} }
+          -
+          1
+          \right)
+         \frac{\tilde{D}  \tilde{p}} {\tilde{D}\tilde{t} }
+		=
+          \left(
+          \frac{ \tilde{c}_{p} }{ \tilde{R} }
+          -
+          1
+          \right)
+		\tilde{\nabla} \cdot 
+			\left[ \tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        {\color{red} Q\omega}
+        +
+\]
+\[
+        \left[
+        \tilde{\nabla} \cdot 
+		\left( 
+		\tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		\right)
+        +
+        \frac{ \tilde{c}_{p} }{ \tilde{R} }
+        (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+		 +
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+
+\[
+          \frac{ 1 }{ \gamma - 1}
+         \frac{\tilde{D}  \tilde{p}} {\tilde{D}\tilde{t} }
+		=
+        \frac{ 1 }{ \gamma -1 }
+		\tilde{\nabla} \cdot 
+			\left[ \tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        {\color{red} Q\omega}
+        +
+\]
+\[
+        \left[
+        \tilde{\nabla} \cdot 
+		\left( 
+		\tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		\right)
+        +
+        \frac{ \gamma }{ \gamma - 1 }
+        (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+		 +
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+
+\newpage
+
+\[
+         \frac{\tilde{D}  \tilde{p}} {\tilde{D}\tilde{t} }
+         =
+         \tilde{\rho}  
+         \frac{\tilde{D} } {\tilde{D}\tilde{t} }
+         \frac{ \tilde{p}}{ \tilde{\rho}}
+         +
+         \frac{ \tilde{p}}{ \tilde{\rho}}
+         \frac{\tilde{D} \tilde{\rho}} {\tilde{D}\tilde{t} }
+        = 
+		\tilde{\nabla} \cdot 
+			\left[ \tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        (\gamma - 1) Q \omega
+        +
+\]
+\[
+        (\gamma - 1)
+        \left[
+        \tilde{\nabla} \cdot 
+		\left( 
+		\tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		\right)
+        +
+        \frac{ \gamma }{ \gamma - 1 }
+        (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+		 +
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+
+\[
+         \tilde{\rho}  
+         \frac{\tilde{D} } {\tilde{D}\tilde{t} }
+         \frac{ \tilde{p}}{ \tilde{\rho}}
+        = 
+		\tilde{\nabla} \cdot 
+			\left[ \tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        (\gamma - 1) Q \omega
+        +
+\]
+\[
+        (\gamma - 1)
+        \left[
+        \tilde{\nabla} \cdot 
+		\left( 
+		\tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		\right)
+        +
+        (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+		 +
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+Since
+\[   \frac{1} {  \tilde{\rho} } 
+		 \frac{\tilde{D}\tilde{\rho} } {\tilde{D}\tilde{t}}
+	 =
+	 - \tilde{\nabla} \cdot \tilde{\mathbf{u}}
+\]
+
+
+\begin{equation}
+         \tilde{\rho}  
+         \frac{\tilde{D} } {\tilde{D}\tilde{t} }
+         (\frac{ \tilde{p}}{ \tilde{\rho}})
+        = 
+		\tilde{\nabla} \cdot 
+			\left[ \tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )\right]
+                +
+        (\gamma - 1) Q \omega
+        +
+        F
+\label{eqp}
+\end{equation}
+\begin{equation}
+    F \equiv 
+            (\gamma - 1)
+        \left[
+        \tilde{\nabla} \cdot 
+		\left( 
+		\tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		\right)
+        -
+        \tilde{p}  \tilde{\nabla} \cdot \tilde{\mathbf{u}}
+		 +
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\label{eqF}
+\end{equation}
+}
+
+
+
+
 
 Enthalpy of a chemically reacting mixture  
 is define as $h=\sum_iY_ih_i$, and 
@@ -774,13 +1292,19 @@ Enthalpy of specie $i$ is defined as:
 	h_i=\int_0^TC_{pi}dT+\Delta(h_f)_i^o
 \end{equation}
 
+
+{\color{red}
+In Eq. (9), $h$ represents the thermal part, the formation enthalpy is present only in the reaction term 
+}
+
+
 \section{Pressure equation}
 
 
 Using the ideal gas equation:
 
 \begin{equation}
-                \frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
+        \tilde{T}=\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
 \end{equation}
 
 and the definition of $R$ for a chemical reacting flow 
@@ -817,17 +1341,21 @@ and the definition of $R$ for a chemical reacting flow
                 	\frac{\tilde{p}}{\tilde{\rho}\tilde{R}}
         	\right)
         \right)
-	-
+%- \sum\limits_i  \tilde{h}_i s_i	 
+        -
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
+\hspace{-1cm}
         \tilde{\rho}
         \tilde{c}_{pf}
+        {\color{red} \tilde{p} }
         \frac{\tilde{D}}{\tilde{D} t}
         \left(
                 \frac{1}{\tilde{\rho}\tilde{R}}
@@ -861,11 +1389,14 @@ and the definition of $R$ for a chemical reacting flow
         \right)
 	-
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \\
+\hspace{-1cm}
         \tilde{\rho}
         \tilde{c}_{pf}
+        {\color{red} \tilde{p} }
         \frac{\tilde{D}}{\tilde{D} t}
         \left(
                 \frac{1}{\tilde{\rho}\tilde{R}}
@@ -896,8 +1427,9 @@ and the definition of $R$ for a chemical reacting flow
         \right)
 	-
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -930,6 +1462,7 @@ and the definition of $R$ for a chemical reacting flow
         \tilde{\rho}
 	(\tilde{\gamma}-1)
         \tilde{c}_{pf}
+        {\color{red} \tilde{p} }
         \frac{\tilde{D}}{\tilde{D} t}
         \left(
                 \frac{1}{\tilde{\rho}\tilde{R}}
@@ -962,8 +1495,9 @@ and the definition of $R$ for a chemical reacting flow
 	-
 	(\tilde{\gamma}-1)
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -978,7 +1512,7 @@ and the definition of $R$ for a chemical reacting flow
 	-
 	(\tilde{\gamma}-1)
         \tilde{c}_{pf}
-	\frac{1}{\tilde{\rho}\tilde{R}^2}
+	\frac{ {\color{red} \tilde{p} } }{\tilde{\rho}\tilde{R}^2}
         \frac{\tilde{D}}{\tilde{D} t}
 	(
 	\tilde{\rho}\tilde{R}
@@ -1011,8 +1545,9 @@ and the definition of $R$ for a chemical reacting flow
 	-
 	(\tilde{\gamma}-1)
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -1022,7 +1557,7 @@ and the definition of $R$ for a chemical reacting flow
 	-
 	(\tilde{\gamma}-1)
         \tilde{c}_{pf}
-	\frac{1}{\tilde{\rho}\tilde{R}}
+	\frac{ {\color{red} \tilde{p} } }{\tilde{\rho}\tilde{R}}
         \frac{\tilde{D}}{\tilde{D} t}
 	(
 	\tilde{\rho}
@@ -1030,7 +1565,7 @@ and the definition of $R$ for a chemical reacting flow
 	-
 	(\tilde{\gamma}-1)
         \tilde{c}_{pf}
-	\frac{1}{\tilde{R}^2}
+	\frac{ {\color{red} \tilde{p} } }{\tilde{R}^2}
         \frac{\tilde{D}}{\tilde{D} t}
 	\tilde{R}
         =
@@ -1061,8 +1596,9 @@ and the definition of $R$ for a chemical reacting flow
 	-
 	(\tilde{\gamma}-1)
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -1074,7 +1610,7 @@ Considering that $\tilde{R}$ is constant to simpliefied the problem,
         \frac{D \tilde{p}}{D\tilde{t}}
 	-
 	(\tilde{\gamma}-1)
-	\frac{\tilde{c}_{pf}}{\tilde{\rho}\tilde{R}}
+	\frac{\tilde{c}_{pf} {\color{red} \tilde{p} }  }{\tilde{\rho}\tilde{R}}
         \frac{\tilde{D}}{\tilde{D} t}
 	(
 	\tilde{\rho}
@@ -1107,8 +1643,9 @@ Considering that $\tilde{R}$ is constant to simpliefied the problem,
 	-
 	(\tilde{\gamma}-1)
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -1120,7 +1657,7 @@ to eliminate $\dfrac{\tilde{D}\tilde{\rho}}{\tilde{D}t}$
         \frac{D \tilde{p}}{D\tilde{t}}
 	-
 	(\tilde{\gamma}-1)
-	\frac{\tilde{c}_{pf}}{\tilde{R}}
+	\frac{\tilde{c}_{pf} {\color{red} \tilde{p} }  }{\tilde{R}}
 	\tilde{\nabla}\cdot{\mathbf{u}}
         =
 	(\tilde{\gamma}-1)
@@ -1148,8 +1685,9 @@ to eliminate $\dfrac{\tilde{D}\tilde{\rho}}{\tilde{D}t}$
 	-
 	(\tilde{\gamma}-1)
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -1158,6 +1696,7 @@ to eliminate $\dfrac{\tilde{D}\tilde{\rho}}{\tilde{D}t}$
         \frac{D \tilde{p}}{D\tilde{t}}
 	-
 	\tilde{\gamma}
+	{\color{red} \tilde{p} }
 	\tilde{\nabla}\cdot{\mathbf{u}}
         =
 	(\tilde{\gamma}-1)
@@ -1187,8 +1726,9 @@ to eliminate $\dfrac{\tilde{D}\tilde{\rho}}{\tilde{D}t}$
 	-
 	(\tilde{\gamma}-1)
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -1196,61 +1736,312 @@ to eliminate $\dfrac{\tilde{D}\tilde{\rho}}{\tilde{D}t}$
 Zeldowich formulation difussion flame, $Da\to \infty$
 
 \begin{equation}
-	\tilde{\rho} \frac{D  \tilde{Y_o}}{D \tilde{t}}
+	\tilde{\rho} \frac{D  \tilde{Y}_O }{D \tilde{t}}
 = 
-	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_o\tilde{\nabla} \tilde{Y_o})
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_o\tilde{\nabla} 
+	\tilde{Y}_O
+	)
 	+
-        \tilde{\rho}\mathcal{s}_ow	
- ,
+    \tilde{\rho}s_O w,
+\label{eqYO}
 \end{equation}
 
 \begin{equation}
-	\tilde{\rho} \frac{D  \tilde{Y_f}}{D \tilde{t}}
+	\tilde{\rho} \frac{D  \tilde{Y}_F }{D \tilde{t}}
 = 
-	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_f\tilde{\nabla} \tilde{Y_f})
+	\tilde{\nabla}\cdot( \tilde{\rho} \mathcal{D}_f\tilde{\nabla} \tilde{Y}_F)
 	+
-        \tilde{\rho}\mathcal{s}_fw	
- ,
+        \tilde{\rho}s_F w	,
+\label{eqYF}
 \end{equation}
 
 Adding the above equation
 
 \begin{equation}
-	\tilde{\rho} \frac{D  (\tilde{Y_o}+\tilde{Y_f})}{D \tilde{t}}
+	\tilde{\rho} \frac{D  }{D \tilde{t}} 
+	{\color{red} (s_o \tilde{Y}_F - s_f \tilde{Y}_O + 1) }
 = 
 	\tilde{\nabla}
 	\cdot
-	\left( 
+	\left[
 		\tilde{\rho} 
 		\left( 
-			\mathcal{D}_o\tilde{\nabla} \tilde{Y_o}
-			+
-			\mathcal{D}_f\tilde{\nabla} \tilde{Y_f})
+			\mathcal{D}_f\tilde{\nabla} s_o \tilde{Y}_F)
+			-
+		    \mathcal{D}_o\tilde{\nabla} {s_f \tilde{Y}_O}
 		\right) 
-	\right) 
-	+
-	\tilde{\rho}(\mathcal{s}_o+{s}_f)w	
+	\right] 
+%
+	{\color{violet} OUT + \tilde{\rho}(s_O+{s}_F)w	}
  ,
 \end{equation}
 
-Assuming that $\mathcal{D}_f=\mathcal{D}_f=\mathcal{D}$
+Assuming that $\mathcal{D}_f=\mathcal{D}_f=\mathcal{D}$ and {\color{red} defining the mixture fraction function $Z$ as $Z \equiv s_O\hat{Y}_F - s_F \hat{Y}_O + 1 = S\hat{Y}_F -  \hat{Y}_O + 1$ (since $s_F=1$ and $s_O= S \equiv s Y_{F\infty}/Y_{O-\infty}$).
+%
+Combining Eqs. (\ref{eqYO}) and (\ref{eqYF})  according to obtaining $Z$ as dependent variable of the resulting equation, one finds}
 
 \begin{equation}
-	\tilde{\rho} \frac{D  (\tilde{Y_o}+\tilde{Y_f})}{D \tilde{t}}
+	\tilde{\rho} \frac{D Z }{D \tilde{t}}
 = 
 	\tilde{\nabla}
 	\cdot
-	\left( 
-		\tilde{\rho} 
-		\left( 
-			\mathcal{D}\tilde{\nabla} (\tilde{Y_o}+\tilde{Y_f})
-		\right) 
-	\right) 
-	+
-	\tilde{\rho}(\mathcal{s}_o+{s}_f)w	
- ,
+	\left(
+		\tilde{\rho} \mathcal{D} \tilde{\nabla} Z 
+	\right)  \ \ \ \ \ 
+	{\color{violet} OUT +	\tilde{\rho}(s_o+{s}_f)w	},
 \end{equation}
 
+{\color{red}
+Combining Eqs. (\ref{eqp}), (\ref{eqYO}) and (\ref{eqYF}) according to $(S+1)/(\gamma -1)Q$ Eq. (\ref{eqp}) + Eqs. (\ref{eqYO}) and (\ref{eqYF}):
+%
+\begin{equation}
+	\tilde{\rho} \frac{D  }{D \tilde{t}}
+	\left(
+	\frac{(S+1)}{(\gamma-1)Q} \frac{ \tilde{p}}{ \tilde{\rho}} 
+	+ \tilde{Y}_F + \tilde{Y}_O
+	\right)
+= 
+	\tilde{\nabla}\cdot \left[ \tilde{\rho} \mathcal{D}
+	\tilde{\nabla}
+	\left(
+	\frac{(S+1)}{(\gamma-1)Q} \frac{ \tilde{p}}{ \tilde{\rho}} 
+	+ \tilde{Y}_F + \tilde{Y}_O
+	\right)
+	\right]
+	+
+	\frac{(S+1)}{(\gamma-1)Q} F
+\end{equation}
+Defining
+\[
+  H \equiv 
+    \frac{1}{\tilde{Q}} 
+    \frac{ \tilde{p}}{ \tilde{\rho}} + \tilde{Y}_F + \tilde{Y}_O,
+    \ \ \ \ \ \ 
+    \tilde{Q} \equiv 	\frac{(\gamma-1)Q}{(S+1)}
+\]
+\begin{equation}
+	\tilde{\rho} \frac{\tilde{D}  H}{\tilde{D} \tilde{t}}
+= 
+	\tilde{\nabla}\cdot 
+	\left( \tilde{\rho} \mathcal{D} \tilde{\nabla} H \right)
+	+
+	\frac{F}{\tilde{Q}}
+\end{equation}
+with (\ref{eqF})
+\[
+    F \equiv 
+            (\gamma - 1)
+        \left[
+        \tilde{\nabla} \cdot 
+		\left( 
+		\tilde{\rho} \alpha
+		\tilde{\nabla} (\frac{ \tilde{p} }{  \tilde{\rho} } )
+		\right)
+        -
+        \tilde{p}  \nabla \cdot \mathbf{u}
+		 +
+        % \pmb{\tilde{\tau}}:\tilde{\nabla} \tilde{\mathbf{u}} 
+        \pmb{\tilde{\tau}}:\tilde{\nabla} \pmb{\tilde{u}} 
+        -
+        \sum\limits_i
+        \left(
+                 \tilde{\rho}\tilde{h}_i
+                \frac{D}{Dt}
+		\tilde{Y}_i
+		\right)
+        +
+        \tilde{\nabla} \cdot
+        \sum\limits_i 
+        \tilde{\rho}\mathcal{D}_{im}\tilde{\nabla}\tilde{Y}_i     
+        \tilde{h}_i
+        \right]
+\]
+}
+
+{\color{blue}
+In the fuel side of the flame, 
+\[
+     H
+     =
+     \frac{1}{\tilde{Q}} \frac{\tilde{p}}{\tilde{\rho}} + \tilde{Y}_F
+     , \ \ \ 
+     Z = S \tilde{Y}_F + 1
+\]
+and  combining them to determined $p$, it is found
+\[
+    H = \frac{1}{\tilde{Q}} \frac{\tilde{p}}{\tilde{\rho}}
+    + 
+    \frac{Z - 1}{S}, 
+    \ \ \ \ \ \ 
+    \frac{1}{\tilde{Q}} \frac{\tilde{p}}{\tilde{\rho}}
+    =
+    \left( H - \frac{Z-1}{S} \right)
+\]
+\begin{equation}
+    \frac{\tilde{p}}{\tilde{\rho}}
+    =
+    \tilde{Q}
+    \left( H - \frac{Z-1}{S} \right)
+\label{eq0-15}
+\end{equation}
+and  in the oxidant side of the flame,
+\[
+     H
+     =
+     \frac{1}{\tilde{Q}} \frac{\tilde{p}}{\tilde{\rho}} + \tilde{Y}_O
+     , \ \ \ 
+     Z = - \tilde{Y}_O + 1
+\]
+and  combining them to determined $p$, it is found
+\[
+    H = \frac{1}{\tilde{Q}} \frac{\tilde{p}}{\tilde{\rho}}
+    -
+    (Z - 1), 
+    \ \ \ \ \ \ 
+    \frac{1}{\tilde{Q}} \frac{\tilde{p}}{\tilde{\rho}}
+    =
+    \left[ H + (Z-1) \right]
+\]
+\begin{equation}
+    \frac{\tilde{p}}{\tilde{\rho}}
+    =
+    \tilde{Q}
+    \left[ H + (Z-1) \right]
+\label{eq0-16}
+\end{equation}
+
+
+
+
+
+
+
+
+
+From Eqs. (\ref{eq0-15}) and (\ref{eq0-16}), the source term $F$ can be written as a function of $H$ and $Z$, $F = F(H, Z, \rho, \mathbf{v}) $.
+
+Note that $\hat{H}$ is a dimesionaless function because $p/q\rho$ is dimensionaless.
+%
+Then, rewriting function $H$ as
+\[
+    \hat{H} 
+    \equiv 
+    \frac{1}{\hat{Q} } \frac{\hat{p}}{\hat{\rho}} + \hat{Y}_F + \hat{Y}_O
+\]
+with
+\[
+    \hat{Q} 
+    \equiv 
+    \frac {(\gamma-1) q \rho_{\infty}} {(S+1)p_{\infty}}  
+\]
+Equation (38) in the dimensionaless form is
+\begin{equation}
+     St \frac{ \hat{D} }{ \hat{D} \hat{t}} \hat{H}
+     = 
+    \frac{1}{Re} \hat{\nabla} \cdot (  \hat{\rho} \hat{\alpha}  \hat{\nabla} \hat{H})  
+      +
+    \frac{\hat{F}}{\hat{Q}}  
+\label{eq0-17}
+\end{equation}
+in which 
+\[
+    St \frac{ \hat{D} \bullet }{ \hat{D} \hat{t}} 
+    \equiv 
+    St \hat{\rho} \frac{\partial \bullet} {\partial \hat{t}}
+      +
+     \hat{\rho}  \pmb{\hat{u}} \cdot  ( \hat{\nabla}  \bullet)
+    =
+    St \hat{\rho} \frac{\partial \bullet } { \partial \hat{t} }
+    +
+    \hat{\rho} \hat{u}_i \frac{\partial \bullet} {\partial \hat{x}_i}  
+\]
+%\[    \hat{F}    \equiv    \frac{1}{\hat{Q}}    \frac{\gamma - 1}{\gamma}      \left[     -     \hat{p} \nabla \cdot \mathbf{\hat{v}}     +     \frac{1}{Re}     \nabla \cdot      \left(     \hat{\rho} \hat{\alpha}  \nabla ( \frac{\hat{p}}{\hat{\rho}} )     \right)      +     \frac{\gamma Ma^2}{Re}\nabla \mathbf{\hat{v}} : \mathbf{\hat{\Gamma}}      \right]\]
+{\color{red}
+\[
+\hspace{-4cm}
+    \hat{F} \equiv 
+            (\gamma - 1)
+        \left\{
+        -
+        \hat{p}  \hat{\nabla} \cdot \pmb{\hat{u}}
+		 +
+		 \frac{\gamma Ma^2}{Re}
+        \pmb{\hat{\tau}}:\hat{\nabla} \pmb{\hat{u}}
+        -
+        \right.
+\]
+\[
+        \left.
+        \sum\limits_i
+        \left(
+                \frac{ \gamma St}
+                     {\gamma-1}
+                \hat{\rho} \hat{h}_i     
+                \frac{\hat{D}}{\hat{D}\hat{t}}
+		\hat{Y}_i
+		\right)
+        +
+%        \\
+        \hat{\nabla} \cdot
+        \left[
+        \sum\limits_i 
+        \frac{ \gamma }{\gamma-1} 
+        \frac{\hat{\rho}\mathcal{\hat{D}}_{im}}{Re}
+        \hat{\nabla}\hat{Y}_i   
+        \hat{h}_i
+		+
+		\frac{\hat{\rho} \hat{\alpha}}{Re}
+		\hat{\nabla} (\frac{ \hat{p} }{ \hat{\rho} } )
+		\right]
+        \right\}
+\]
+}
+
+
+
+
+
+
+
+The dimensionaless mixture fraction equation is similar the first three terms in Eq. (\ref{eq0-16})
+\begin{equation}
+     St\frac{\hat{D}}{\hat{D} \hat{t}} \hat{Z}
+     = 
+    \frac{1}{Re} \nabla \cdot (  \hat{\rho} \hat{\alpha}  \nabla \hat{Z})  
+\label{eq0-18}
+\end{equation}
+with
+%
+\[
+    \hat{t} = \frac{t}{t_c}, \ \ \ 
+    \hat{x} \equiv \frac{x}{l_c}, \ \ \ 
+\]
+\[
+    \pmb{\hat{u}} \equiv \frac{\pmb{u} }{ u_{\infty} }, \ \ \
+    \hat{\rho}    \equiv \frac{\rho    }{ \rho_{\infty}}, \ \ \ 
+    \hat{T}       \equiv \frac{T       }{ T_{\infty}}, \ \ \ 
+    \hat{p}       \equiv \frac{p       }{ p_{\infty}}, \ \ \ 
+    \hat{Y}_F     \equiv \frac{Y_F     }{ Y_{F\infty}}, \ \ \
+    \hat{Y}_O     \equiv \frac{Y_O     }{ Y_{O-\infty}}, \ \ \ 
+\]
+\[
+    \hat{\alpha} 
+         \equiv \frac{\alpha           }
+                     {\alpha_{\infty}  }, \ \ \ 
+    Le_i \equiv \frac{ \alpha_{\infty} }
+                     { D_{i\infty}     } , \ \ \ 
+    Pe \equiv \frac{ l_c u_{\infty}    }
+                   { \alpha_{\infty}   },  \ \ \ 
+    Re \equiv \frac{ l_c u_{\infty}    } 
+                   { \mu_{\infty} / \rho_{\infty} },  \ \ \ 
+    Ma \equiv \frac{u_{\infty}^2}{\gamma R T_{\infty}}
+\]
+\[
+    Pr=Le_F=Le_O=1,\ \ \ \ Pe = Re
+\]
+}
+
+\newpage
 
 \begin{equation}
 \begin{split}
@@ -1286,8 +2077,9 @@ Assuming that $\mathcal{D}_f=\mathcal{D}_f=\mathcal{D}$
 	- 
 	(\tilde{\gamma}-1)
         \sum\limits_i
-        \tilde{h}_i
-        \mathcal{s}_i	
+        ({\color{red} h_i^0} + \tilde{h}_i)
+        s_i	
+        \omega
 \end{split}
 \end{equation}
 
@@ -1299,7 +2091,7 @@ Defining:
 (\tilde{\gamma}-1)
 \sum\limits_i
 \tilde{h}_i
-\mathcal{s}_i	
+s_i	
 \end{equation}
 
 And mutliplied this equation by  $(s_o+s_f)/Q$
